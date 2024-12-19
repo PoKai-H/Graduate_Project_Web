@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Record Audio{% endblock %}
+
+{% block content %}
+<div class="record-page">
+    <div class="container">
+        <h1>Record Audio</h1>
+        <div class="record-controls">
+            <button id="startButton" class="btn">Start Recording</button>
+            <button id="stopButton" class="btn" disabled>Stop Recording</button>
+        </div>
+        <audio id="audioPlayback" controls></audio>
+        <form id="uploadForm" action="{{ url_for('home.upload_audio') }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="audioData" name="audioData">
+            <button type="submit" id="uploadButton" class="btn" disabled>Upload Recording</button>
+        </form>
+    </div>
+</div>
+<script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    document.getElementById('startButton').addEventListener('click', async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+            const audioUrl = URL.createObjectURL(audioBlob);
+            const audio = document.getElementById('audioPlayback');
+            audio.src = audioUrl;
+
+            // 將音頻數據轉換為 Base64 並設置到隱藏的輸入字段中
+            const reader = new FileReader();
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = () => {
+                const base64String = reader.result.split(',')[1];
+                document.getElementById('audioData').value = base64String;
+                document.getElementById('uploadButton').disabled = false;
+            };
+
+            audioChunks = [];
+        };
+
+        mediaRecorder.start();
+        document.getElementById('startButton').disabled = true;
+        document.getElementById('stopButton').disabled = false;
+    });
+
+    document.getElementById('stopButton').addEventListener('click', () => {
+        mediaRecorder.stop();
+        document.getElementById('startButton').disabled = false;
+        document.getElementById('stopButton').disabled = true;
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const response = await fetch(event.target.action, {
+            method: 'POST',
+            body: formData
+        });
+        if (response.ok) {
+            alert('Audio uploaded successfully!');
+        } else {
+            alert('Failed to upload audio.');
+        }
+    });
+</script>
+{% endblock %}

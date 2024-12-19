@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<div class="search-page">
+    <form action="{{ url_for('home.search') }}" method="post" class="search-bar">
+        <input type="text" name="query" placeholder="Search for books...">
+        <button type="submit" class="btn">Search</button>
+    </form>
+    <div class="categories">
+        {% for category in categories %}
+            <button class="btn"><a href="{{ url_for('home.category', category_name=category) }}">{{ category }}</a></button>
+        {% endfor %}
+    </div>
+    <h1>Search Results</h1>
+    <div class="book-list">
+        {% for book in books %}
+            <div class="book-item">
+                <img src="{{ book.image_url }}" alt="{{ book.title }}">
+                <h2>{{ book.title }}</h2>
+                <p>{{ book.category }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

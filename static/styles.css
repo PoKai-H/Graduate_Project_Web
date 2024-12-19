@@ -1,0 +1,267 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #FFD4D4; /* 整個頁面的背景顏色 */
+}
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #f0f0f0; /* 側邊欄的背景顏色 */
+    color: #333; /* 修改文字顏色以便在淺色背景上可見 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px; /* 使邊角圓滑 */
+}
+.sidebar img {
+    max-width: 150px;
+    margin-bottom: 20px;
+    
+}
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar nav ul li {
+    margin: 10px 0;
+}
+.sidebar nav ul li a {
+    color: #333; /* 修改文字顏色以便在淺色背景上可見 */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-radius: 10px; /* 使導航連結邊角圓滑 */
+    padding: 5px;
+}
+.sidebar nav ul li a img {
+    max-width: 70px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.search-bar {
+    margin-top: 50px;
+
+    width: 100%;
+}
+.search-bar input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+.content {
+    margin-left: 110px;
+    margin-right: 110px;
+    padding: 20px;
+    width: calc(100% - 220px);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中 */
+}
+h1 {
+    color: #333;
+}
+
+/* 其他現有的樣式 */
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.book-item {
+    background-color: #FFECEC;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-item img {
+    max-width: 100px; /* 縮小圖片 */
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.book-item:hover {
+    transform: translateY(-10px); /* 浮起來的效果 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.book-item:hover img {
+    transform: scale(1.1); /* 放大圖片 */
+}
+
+.book-item h2 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.book-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+
+.homeTopCard {
+    width:45%; /* 調整寬度 */
+    border-radius: 15px;
+    justify-content: center;
+}
+
+.homeTopCard:hover {
+    transform: translateY(-10px); /* 浮起來的效果 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.logout {
+    margin-top: 400px; /* 將登出按鈕推到側邊欄底部 */
+}
+
+.search-page {
+    text-align: center;
+}
+.search-page.search-bar {
+    margin-top: 50px;
+
+    width: 100%;
+}
+.search-page.search-bar input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-page .search-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    background-color: #F16B5C;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-page .search-bar button:hover {
+    background-color: #555;
+}
+
+
+.search-page form {
+    margin-bottom: 20px;
+}
+
+.search-page .categories {
+    margin-bottom: 20px;
+}
+
+.search-page .categories .btn {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+}
+
+.search-page .categories .btn:nth-child(1) {
+    background-color: #FFC1C1; /* 第一個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(2) {
+    background-color: #FFB0B0; /* 第二個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(3) {
+    background-color: #FF9F9F; /* 第三個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(4) {
+    background-color: #FF8E8E; /* 第四個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(5) {
+    background-color: #FF7D7D; /* 第五個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(6) {
+    background-color: #FF6C6C; /* 第六個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(7) {
+    background-color: #FF5B5B; /* 第七個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(8) {
+    background-color: #FF4A4A; /* 第八個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(9) {
+    background-color: #FF3939; /* 第九個按鈕的顏色 */
+}
+
+.search-page .categories .btn:nth-child(10) {
+    background-color: #FF2828; /* 第十個按鈕的顏色 */
+}
+
+.search-page .categories .btn:hover {
+    transform: translateY(-5px); /* 浮起來的效果 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 針對錄音頁面的樣式 */
+.record-page .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px; /* 設置最大寬度 */
+    width: 100%; /* 使容器寬度自適應 */
+    margin: 0 auto; /* 水平居中 */
+    margin-top: 300px;
+}
+
+.record-page .record-controls {
+    margin-bottom: 20px;
+}
+
+.record-page .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.record-page .btn:disabled {
+    background-color: #ccc;
+}
+
+.record-page .btn:hover:enabled {
+    background-color: #555;
+}
+
+.record-page audio {
+    margin-top: 20px;
+    width: 100%;
+}

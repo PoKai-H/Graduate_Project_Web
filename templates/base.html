@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <img src="{{ url_for('static', filename='images/logo_Large.svg') }}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home.home') }}"><img src="{{ url_for('static', filename='images/home.svg') }}" alt="Home Icon">Home</a></li>
+                <li><a href="{{ url_for('home.record') }}"><img src="{{ url_for('static', filename='images/record.svg') }}" alt="Record Icon">Record</a></li>
+                <li><a href="{{ url_for('home.search') }}"><img src="{{ url_for('static', filename='images/search.svg') }}" alt="Search Icon">Search</a></li>
+                <li><a href="#"><img src="{{ url_for('static', filename='images/account.svg') }}" alt="Account Icon">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="logout">
+            <a href="{{ url_for('home.logout') }}">Logout</a>
+        </div>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<img src="{{ url_for('static', filename='images/homeTopCard.svg') }}" alt="homeTopCard" class="homeTopCard">
+<h1>New Release Books</h1>
+<div class="book-list">
+    {% for book in books %}
+        <div class="book-item">
+            <img src="{{ book.image_url }}" alt="{{ book.title }}">
+            <h2>{{ book.title }}</h2>
+            <p>{{ book.category }}</p>
+        </div>
+    {% endfor %}
+</div>
+<h1>Your Reading Progress</h1>
+<div class="user-progress-list">
+    <div class="user-progress-item">
+        <h2>{{ user_progress.user.name }} ({{ user_progress.user.username }})</h2>
+        <ul>
+            {% for progress in user_progress.progress %}
+                <li>Book ID: {{ progress.book_id }}, Progress Time: {{ progress.progress_time }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
